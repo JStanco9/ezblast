@@ -79,7 +79,8 @@ class EZBlastCLI:
 
     def query(self, args):
         config = self._find_config(args)
-        return backend.blast(**vars(args), **config)
+        kwargs = {**config, **vars(args)}
+        return backend.blast(**kwargs)
 
 
 def main():
