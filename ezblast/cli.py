@@ -16,18 +16,15 @@ class HelpParser(argparse.ArgumentParser):
 
 class EZBlastCLI:
 
-    def __init__(self):
-        self.apikey = None
-
     @staticmethod
     def _find_config_path():
         return os.path.join(os.path.expanduser('~'), '.ezblast')
 
     @staticmethod
-    def _write_config(apikey):
+    def _write_config(api_key):
         config = configparser.ConfigParser()
         config['default'] = {
-            'api_key': apikey
+            'api_key': api_key
         }
         path = EZBlastCLI._find_config_path()
         with open(path, 'w') as f:
@@ -78,7 +75,6 @@ class EZBlastCLI:
     def configure(self, args):
         api_key = input('Enter ncbi BLAST api key: ')
         self._write_config(api_key)
-        self.apikey = apikey
         return 0
 
     def query(self, args):
