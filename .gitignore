@@ -1,0 +1,7 @@
+.vscode/
+.DS_Store
+*.zip
+*.egg-info
+examples/
+data/
+*__pycache__/
